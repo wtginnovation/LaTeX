@@ -1,0 +1,29 @@
+\documentclass[a4paper]{letter}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp} 
+\usepackage{hyperref}
+\usepackage[gen]{eurosym}
+
+\signature{Jim Smith}
+\address{123 Sample Street \\ Sampleville}
+\begin{document}
+\begin{letter}{}
+
+\opening{Dear John Smith:}
+
+\ldots \\
+Here's the include: \\ 
+This is a simple include. Variables aren't resolved in here.
+ \\
+\ldots \\
+This is another include via \#parse. Variables are resolved: John Smith
+ \\
+\ldots
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+\closing{Sincerly,} 
+\end{letter}
+\end{document}

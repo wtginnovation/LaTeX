@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%-70(%d{yyyy-MM-dd HH:mm:ss.SSS} [%.15thread] %-5level %.36logger{36}) - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- application log -->
+	<logger name="de.vsfexperts" level="info" />
+	<logger name="de.vsfexperts.latex.renderer.LatexRenderJob" level="info" />
+	<logger name="org.springframework" level="info" />
+
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>

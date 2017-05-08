@@ -1,0 +1,27 @@
+\documentclass[a4paper]{letter}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp} 
+\usepackage{hyperref}
+\usepackage[gen]{eurosym}
+
+\signature{Jim Smith}
+\address{123 Sample Street \\ Sampleville}
+\begin{document}
+\begin{letter}{}
+
+\opening{Dear $CustomerName:}
+
+\ldots \\
+Here's the include: \\ 
+#include("/META-INF/templates/sampleInclude.tex") \\
+\ldots \\
+#parse("/META-INF/templates/sampleParse.tex") \\
+\ldots
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+\closing{Sincerly,} 
+\end{letter}
+\end{document}
