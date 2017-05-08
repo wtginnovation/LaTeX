@@ -17,12 +17,12 @@ This project is providing a simple integration of LaTeX with java. Velocity temp
 3. See `LatexTemplateIT`/`SynchronousLatexRendererIT` to get started in your project.
 
 # Server Tasks
-## Install missing TexLive packages
+Install missing TexLive packages
 1. change to user latex
 2. run `tlmgr init-usertree`, if this is the first time
 3. run `tlmgr install <package>` to install the missing package
 
-#Usage
+# Usage
 - Generating a pdf: send post request with tex body to base url. The response will contain a uuid, which is used to retrieve the pdf. Status code will be accepted(202).
 - Retrieving a pdf: send get request to base url, e.g. http://renderer/65891272-fbd6-44fe-8152-dc4ea8e1901b. If it's not available yet, the service will return a 404 status code. If it was already created, the pdf file will be returned.
 - The server status url is /admin/index.html. Jolokia(jmx remoting) and dropwizard metrics have been integrated.
