@@ -34,8 +34,8 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:git://github.com:vsfexperts/LaTeX.git</connection>
-		<developerConnection>scm:git:git://github.com:vsfexperts/LaTeX.git</developerConnection>
+		<connection>scm:git:git@github.com:vsfexperts/LaTeX.git</connection>
+		<developerConnection>scm:git:git@github.com:vsfexperts/LaTeX.git</developerConnection>
 		<url>https://github.com/vsfexperts/LaTeX</url>
 	</scm>
 
