@@ -16,12 +16,6 @@
 
 	<name>LaTeX Rendering project</name>
 
-	<modules>
-		<module>../LaTeX-renderer</module>
-		<module>../LaTeX-server</module>
-		<module>../LaTeX-template</module>
-	</modules>
-
 	<properties>
 		<java.version>1.8</java.version>
 		<encoding>utf-8</encoding>
@@ -66,14 +60,38 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>release</id>
+			<modules>
+				<module>../LaTeX-distribution</module>
+				<module>../LaTeX-renderer</module>
+				<module>../LaTeX-server</module>
+				<module>../LaTeX-template</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>../LaTeX-renderer</module>
+				<module>../LaTeX-server</module>
+				<module>../LaTeX-template</module>
+			</modules>
+		</profile>
 	</profiles>
-
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>de.vsfexperts.latex</groupId>
 				<artifactId>latex</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.vsfexperts.latex</groupId>
+				<artifactId>latex-distribution</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -181,6 +199,10 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
