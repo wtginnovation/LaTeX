@@ -5,7 +5,7 @@ cache:
 before_install:
  - sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended xzdec -y
 script:
- - mvn -f LaTeX/pom.xml clean install jacoco:report
+ - mvn -f LaTeX/pom.xml -Pcodecoverage,development clean install jacoco:report
 after_success:
  - bash <(curl -s https://codecov.io/bash)
  
