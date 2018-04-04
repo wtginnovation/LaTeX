@@ -5,7 +5,7 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
-import static org.junit.Assume.*;
+import static org.junit.Assume.assumeThat;
 
 import java.io.File;
 import java.nio.charset.Charset;

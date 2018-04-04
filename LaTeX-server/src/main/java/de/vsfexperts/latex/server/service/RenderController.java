@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codahale.metrics.annotation.Timed;
 import de.vsfexperts.latex.renderer.LatexRenderer;
+import io.micrometer.core.annotation.Timed;
 
 @RestController
 public class RenderController {
@@ -34,13 +34,13 @@ public class RenderController {
 
 	@PostMapping(value = "/", produces = APPLICATION_JSON_UTF8_VALUE)
 	@ResponseStatus(ACCEPTED)
-	@Timed
+	@Timed("render-job")
 	public UUID renderJob(@RequestBody @Valid @NotNull final String template) {
 		return renderer.render(template);
 	}
 
 	@GetMapping(value = "/{jobId}", produces = APPLICATION_PDF_VALUE)
-	@Timed
+	@Timed("pdf-download")
 	public FileSystemResource renderResult(@PathVariable("jobId") @Valid @NotNull final UUID jobId)
 			throws FileNotFoundException {
 

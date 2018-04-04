@@ -23,24 +23,40 @@
 		<h1>Spring Boot</h1>
 		<table>
 			<tr>
-				<td><a href="/health">Health check</a></td>
-				<td><a href="/info">Generic Info</a></td>
-				<td><a href="/metrics">Metrics</a></td>
-				<td><a href="/mappings">Request mappings</a></td>
+				<td><a href="/actuator/health">Health check</a></td>
+				<td><a href="/actuator/info">Generic Info</a></td>
+				<td><a href="/actuator/metrics">Metrics</a></td>
+				<td><a href="/actuator/mappings">Request mappings</a></td>
 			</tr>
 			<tr>
-				<td><a href="/autoconfig">Auto Config</a></td>
-				<td><a href="/beans">Beans</a></td>
-				<td><a href="/heapdump">Heapdump</a></td>
-				<td><a href="/env">Environment</a></td>
+				<td><a href="/actuator/conditions">Conditions</a></td>
+				<td><a href="/actuator/beans">Beans</a></td>
+				<td><a href="/actuator/heapdump">Heapdump</a></td>
+				<td><a href="/actuator/env">Environment</a></td>
 			</tr>
 			<tr>
-				<td><a href="/configprops">Configuration Properties</a></td>
-				<td><a href="/dump">Thread Dump</a></td>
-				<td><a href="/trace">Trace</a></td>
-				<td><a href="/jolokia">Jolokia</a></td>
+				<td><a href="/actuator/configprops">Configuration Properties</a></td>
+				<td><a href="/actuator/threaddump">Thread Dump</a></td>
+				<td><a href="/actuator/httptrace">Http Trace</a></td>
+				<td><a href="/actuator/loggers">Logger</a></td>
 			</tr>
+			<tr>
+				<td><a href="/actuator/scheduledtasks">Scheduled Tasks</a></td>
+				<td><a href="/actuator/jolokia">Jolokia</a></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>			
+			<tr>
+				<td colspan="4">&nbsp;</td>
+			</tr>			
+			<tr>
+				<td><a href="/actuator/metrics/render-job">Metrics Render Job</a></td>
+				<td><a href="/actuator/metrics/pdf-download">Metrics Pdf Download</a></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>			
 		</table>
+		
 	</div>
 </body>
 </html>

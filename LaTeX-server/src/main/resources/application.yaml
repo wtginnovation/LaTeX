@@ -1,11 +1,15 @@
 ##########################
 ## Global
 ##########################
-endpoints.jmx.domain: latex-renderer
-endpoints.jmx.unique-names: true
-management.security.enabled: false
+management.endpoints.jmx.domain: latex-renderer
+management.endpoints.jmx.unique-names: true
+management.endpoints.web.exposure.include: "*"
+management.metrics.web.server.auto-time-requests: false
+
 server.error.whitelabel.enabled: false
 spring.mvc.favicon.enabled: true
+server.tomcat.additional-tld-skip-patterns: "*.jar"
+
 --- 
 
 ##########################

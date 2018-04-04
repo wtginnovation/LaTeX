@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>%-70(%d{yyyy-MM-dd HH:mm:ss.SSS} [%.15thread] %-5level %.36logger{36}) - %msg%n</pattern>
