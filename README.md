@@ -37,3 +37,4 @@ Install missing TexLive packages
 - Currenly pdflatex is run multiple times to create the pdf. BibTeX or other external tools aren't executed as part of this build. If you need that, it's probably easier to switch to [Latexmk](http://personal.psu.edu/jcc8/latexmk/) instead of pdflatex to render files
 
 [![Build Status](https://travis-ci.org/vsfexperts/LaTeX.svg?branch=release-0.2.0)](https://travis-ci.org/vsfexperts/LaTeX)
+[![codecov](https://codecov.io/gh/vsfexperts/LaTeX/branch/release-0.2.0/graph/badge.svg)](https://codecov.io/gh/vsfexperts/LaTeX)
