@@ -3,7 +3,7 @@ cache:
   directories:
    - $HOME/.m2
 before_install:
- - sudo apt-get install texlive-latex-base texlive-latex-extra xzdec -y
+ - sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended xzdec -y
 script:
  - mvn -f LaTeX/pom.xml clean install
  
