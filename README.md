@@ -33,11 +33,11 @@ Install missing TexLive packages
 # Configuration
 There're 3 config values, which can be set in [application.yaml](latex-server/src/main/resources/application.yaml) or by specifying them on the command line:
 
-| Property                  |  Default (prod)  | Description                                                           |
-| ------------------------- | ---------------- | --------------------------------------------------------------------- | 
-| renderer.archiveDirectory | /var/archive     | Base directory of archive. Render output will be stored in subfolders | 
-| renderer.workDirectory    | /tmp/renderer    | Base temp directory. Temp data will be stored in subfolders           |
-| renderer.threads          | <number of cpus> | Size of rendering thread pool                                         | 
+| Property                  |  Default (prod)    | Description                                                           |
+| ------------------------- | ------------------ | --------------------------------------------------------------------- | 
+| renderer.archiveDirectory | /var/archive       | Base directory of archive. Render output will be stored in subfolders | 
+| renderer.workDirectory    | /tmp/renderer      | Base temp directory. Temp data will be stored in subfolders           |
+| renderer.threads          | \<number of cpus\> | Size of rendering thread pool                                         | 
 
 example: `java -Dspring.profiles.active=prod -Drenderer.threads=2 -Drenderer.workDirectory=c:\temp\work -Drenderer.archiveDirectory=c:\temp\archive -jar latex-server.jar`
 
