@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/vsfexperts/LaTeX.svg?branch=release-0.2.0)](https://travis-ci.org/vsfexperts/LaTeX)
+[![codecov](https://codecov.io/gh/vsfexperts/LaTeX/branch/release-0.2.0/graph/badge.svg)](https://codecov.io/gh/vsfexperts/LaTeX)
+
 # Overview
 This project is providing a simple integration of LaTeX with java. Velocity templates are compiled to valid LaTeX code and the result is fed to the external pdflatex process.
 
@@ -13,8 +16,8 @@ This project is providing a simple integration of LaTeX with java. Velocity temp
 
 # Quickstart
 1. Install [MiKTeX](https://miktex.org/download) on windows / [TexLive](https://launchpad.net/~jonathonf/+archive/ubuntu/texlive-2016) on Linux and make sure the `pdflatex` executable is available via system path (e.g. by executing it on the command line).
-2. Browse to `src/test/resources/META-INF` and compile the `sample.tex` file by executing `pdflatex sample.tex`. MiKTeX will try to download the missing packages off the internet. You might have to install them manually in TexLive by using tlmgr.
-3. See `LatexTemplateIT`/`SynchronousLatexRendererIT` to get started in your project.
+2. Browse to `latex-renderer/src/test/resources/META-INF` and compile the `sample.tex` file by executing `pdflatex sample.tex`. MiKTeX will try to download the missing packages off the internet. You might have to install them manually in TexLive by using tlmgr.
+3. See [LatexTemplateIT](latex-template/src/test/java/de/vsfexperts/latex/template/LatexTemplateIT.java) or [SynchronousLatexRendererIT](latex-renderer/src/test/java/de/vsfexperts/latex/renderer/SynchronousLatexRendererIT.java) to get started in your project.
 
 # Server Tasks
 Install missing TexLive packages
@@ -27,6 +30,17 @@ Install missing TexLive packages
 - Retrieving a pdf: send get request to base url, e.g. http://renderer/65891272-fbd6-44fe-8152-dc4ea8e1901b. If it's not available yet, the service will return a 404 status code. If it was already created, the pdf file will be returned.
 - The server status url is /admin/index.html. Jolokia(jmx remoting) and dropwizard metrics have been integrated.
 
+# Configuration
+There're 3 config values, which can be set in [application.yaml](latex-server/src/main/resources/application.yaml) or by specifying them on the command line:
+
+| Property                  |  Default (prod)    | Description                                                           |
+| ------------------------- | ------------------ | --------------------------------------------------------------------- | 
+| renderer.archiveDirectory | /var/archive       | Base directory of archive. Render output will be stored in subfolders | 
+| renderer.workDirectory    | /tmp/renderer      | Base temp directory. Temp data will be stored in subfolders           |
+| renderer.threads          | \<number of cpus\> | Size of rendering thread pool                                         | 
+
+example: `java -Dspring.profiles.active=prod -Drenderer.threads=2 -Drenderer.workDirectory=c:\temp\work -Drenderer.archiveDirectory=c:\temp\archive -jar latex-server.jar`
+
 # Scaling the service
 - Deploy it in a loadbalanced setup on multiple servers
 - Our installation is using [GlusterFS](https://www.gluster.org/) as backend storage of the archive folder, so the pdfs will be distributed and available on all members of the cluster. Each job output is stored in a subdirectory named by its uuid. The tex template and the pdf will be stored there for debugging purposes.
@@ -35,3 +49,4 @@ Install missing TexLive packages
 # ToDos/Limitations
 - The whole tex template is submitted in the post request, so it's currently not possible to include external resources (e.g. images), because those won't be found/available on the render server. Use [pdfinlimg](https://github.com/zerotoc/pdfinlimg) to inline small images (e.g. company logos) and supply them within the tex document. 
 - Currenly pdflatex is run multiple times to create the pdf. BibTeX or other external tools aren't executed as part of this build. If you need that, it's probably easier to switch to [Latexmk](http://personal.psu.edu/jcc8/latexmk/) instead of pdflatex to render files
+
