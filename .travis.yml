@@ -12,6 +12,7 @@ deploy:
   api_key:
     secure: JhYKgsXgu74+snLH1XK1ZZknA4X7a8V6AKyiIyZjX7ph3uJ1aIzOaMKsWvrwYkwrB5stE4H+yDmvgPgrzRuRlWTwh+S0ArhbIQDTsezTAX0gCxWIiAEcpK+/1tZmC8JUR4gFPvn+i6VZ0hnbMteV4wj+gox2aFac0LadCkyMTsp1oXmKvp/3xOEdKNhLlgN2J3JCHMu28Zml65ydDaLgtt6seUbZ5tu/Jt1A3YdqrzxTvdqzCdMdis6oj9Zu7/b9BEnEazsJvSVzWx6e4GRvLp9G7KMOOgONbRBsW/kQ3fFVVTgKw3C0v4MpmocOB2rOtsmrgqC1s7Wr25zPim/cMXsSKht46ygOdS0nDfeX6AfRq9c/7ttlhTPQDxBoB+cfoTaxrWMftnFOcluZR6P3yRgZ/GccOCb68/ErvnyQ6Pnfz/Am/8CJLh9Ip49DpSGAZnEaq9ILSceUmA5kvBSrwXCADsa+91jdis8lwZrA29FwaU9s7oFUrcU9QsRx3BIBNv0+bpks/fxz3XnDLqJ8Q7qkNWi2ET9n8GShwX196EU7RYcM06gUMt2/ErIIdCcDBKBAmCOE4LC8EVpIpAxpDSt8vGr2UmsSg7ayU2wL2lfMsdqb3nhwfq+J8R/SCT1mbHKOkpbk1YVaqxqNEQJH+fpYUbLoOv5vcfZ0zHLtRv0=
   file: latex-distribution/target/release.zip
+  skip_cleanup: true
   on:
     repo: vsfexperts/LaTeX
     tags: true
