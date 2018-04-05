@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/vsfexperts/LaTeX.svg?branch=release-0.2.0)](https://travis-ci.org/vsfexperts/LaTeX)
+[![codecov](https://codecov.io/gh/vsfexperts/LaTeX/branch/release-0.2.0/graph/badge.svg)](https://codecov.io/gh/vsfexperts/LaTeX)
+
 # Overview
 This project is providing a simple integration of LaTeX with java. Velocity templates are compiled to valid LaTeX code and the result is fed to the external pdflatex process.
 
@@ -36,5 +39,3 @@ Install missing TexLive packages
 - The whole tex template is submitted in the post request, so it's currently not possible to include external resources (e.g. images), because those won't be found/available on the render server. Use [pdfinlimg](https://github.com/zerotoc/pdfinlimg) to inline small images (e.g. company logos) and supply them within the tex document. 
 - Currenly pdflatex is run multiple times to create the pdf. BibTeX or other external tools aren't executed as part of this build. If you need that, it's probably easier to switch to [Latexmk](http://personal.psu.edu/jcc8/latexmk/) instead of pdflatex to render files
 
-[![Build Status](https://travis-ci.org/vsfexperts/LaTeX.svg?branch=release-0.2.0)](https://travis-ci.org/vsfexperts/LaTeX)
-[![codecov](https://codecov.io/gh/vsfexperts/LaTeX/branch/release-0.2.0/graph/badge.svg)](https://codecov.io/gh/vsfexperts/LaTeX)
