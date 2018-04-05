@@ -87,10 +87,10 @@
 		<profile>
 			<id>release</id>
 			<modules>
-				<module>../LaTeX-distribution</module>
-				<module>../LaTeX-renderer</module>
-				<module>../LaTeX-server</module>
-				<module>../LaTeX-template</module>
+				<module>../latex-distribution</module>
+				<module>../latex-renderer</module>
+				<module>../latex-server</module>
+				<module>../latex-template</module>
 			</modules>
 		</profile>
 		<profile>
@@ -99,9 +99,9 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
-				<module>../LaTeX-renderer</module>
-				<module>../LaTeX-server</module>
-				<module>../LaTeX-template</module>
+				<module>../latex-renderer</module>
+				<module>../latex-server</module>
+				<module>../latex-template</module>
 			</modules>
 		</profile>
 	</profiles>
