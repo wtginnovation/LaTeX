@@ -28,7 +28,7 @@ Install missing TexLive packages
 # Usage
 - Generating a pdf: send post request with tex body to base url. The response will contain a uuid, which is used to retrieve the pdf. Status code will be accepted(202).
 - Retrieving a pdf: send get request to base url, e.g. http://renderer/65891272-fbd6-44fe-8152-dc4ea8e1901b. If it's not available yet, the service will return a 404 status code. If it was already created, the pdf file will be returned.
-- The server status url is /admin/index.html. Jolokia(jmx remoting) and dropwizard metrics have been integrated.
+- The server status url is /admin/index.html. Jolokia(jmx remoting) and micrometer metrics have been integrated.
 
 # Configuration
 There're 3 config values, which can be set in [application.yaml](latex-server/src/main/resources/application.yaml) or by specifying them on the command line:
