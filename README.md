@@ -31,7 +31,7 @@ Install missing TexLive packages
 - The server status url is /admin/index.html. Jolokia(jmx remoting) and dropwizard metrics have been integrated.
 
 # Configuration
-There're 3 config values, which can be set in `application.yaml` or by specifying them on the command line:
+There're 3 config values, which can be set in [application.yaml](latex-server/src/main/resources/application.yaml) or by specifying them on the command line:
 
 | Property                  |  Default (prod)  | Description                                                           |
 | ------------------------- | ---------------- | --------------------------------------------------------------------- | 
