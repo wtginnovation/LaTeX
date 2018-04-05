@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>de.vsfexperts.latex</groupId>
+		<artifactId>latex</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+		<relativePath>../latex</relativePath>
+	</parent>
+
+	<artifactId>latex-distribution</artifactId>
+	<packaging>pom</packaging>
+
+	<name>LaTeX Distribution</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>latex-distribution</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<appendAssemblyId>false</appendAssemblyId>
+							<finalName>release</finalName>
+							<descriptors>
+								<descriptor>src/assembly/assembly.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.vsfexperts.latex</groupId>
+			<artifactId>latex-renderer</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.vsfexperts.latex</groupId>
+			<artifactId>latex-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.vsfexperts.latex</groupId>
+			<artifactId>latex-template</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

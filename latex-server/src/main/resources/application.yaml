@@ -1,0 +1,35 @@
+##########################
+## Global
+##########################
+management.endpoints.jmx.domain: latex-renderer
+management.endpoints.jmx.unique-names: true
+management.endpoints.web.exposure.include: "*"
+management.metrics.web.server.auto-time-requests: false
+
+server.error.whitelabel.enabled: false
+spring.mvc.favicon.enabled: true
+server.tomcat.additional-tld-skip-patterns: "*.jar"
+
+--- 
+
+##########################
+## Default
+##########################
+spring:
+  profiles: default
+ 
+renderer:
+  archiveDirectory: c:\temp\archive
+  workDirectory: c:\temp
+  threads: 1
+
+--- 
+##########################
+## Prod
+##########################
+spring:
+  profiles: prod
+
+renderer:
+  archiveDirectory: /var/archive
+  workDirectory: /tmp/renderer

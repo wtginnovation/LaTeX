@@ -1,0 +1,46 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+
+	<id>bin</id>
+
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<includeBaseDirectory>false</includeBaseDirectory>
+
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>dependencies</outputDirectory>
+			<useTransitiveDependencies>true</useTransitiveDependencies>
+			<useProjectArtifact>false</useProjectArtifact>
+			<excludes>
+				<exclude>${project.groupId}:*:*</exclude>
+			</excludes>
+		</dependencySet>
+		<dependencySet>
+			<outputDirectory>distribution</outputDirectory>
+			<useTransitiveDependencies>false</useTransitiveDependencies>
+			<useProjectArtifact>false</useProjectArtifact>
+			<includes>
+				<include>${project.groupId}:*</include>
+			</includes>
+		</dependencySet>
+	</dependencySets>
+
+	<fileSets>
+		<fileSet>
+			<directory>../licenses</directory>
+			<outputDirectory>distribution/licenses</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>..</directory>
+			<includes>
+				<include>LICENSE</include>
+			</includes>
+			<outputDirectory>distribution</outputDirectory>
+		</fileSet>
+	</fileSets>
+
+</assembly>
