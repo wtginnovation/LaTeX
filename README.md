@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/vsfexperts/LaTeX.svg?branch=release-0.2.0)](https://travis-ci.org/vsfexperts/LaTeX)
-[![codecov](https://codecov.io/gh/vsfexperts/LaTeX/branch/release-0.2.0/graph/badge.svg)](https://codecov.io/gh/vsfexperts/LaTeX)
+[![Build Status](https://travis-ci.org/vsfexperts/LaTeX.svg)](https://travis-ci.org/vsfexperts/LaTeX)
+[![codecov](https://codecov.io/gh/vsfexperts/LaTeX/branch/development/graph/badge.svg)](https://codecov.io/gh/vsfexperts/LaTeX)
 
 # Overview
 This project is providing a simple integration of LaTeX with java. Velocity templates are compiled to valid LaTeX code and the result is fed to the external pdflatex process.
