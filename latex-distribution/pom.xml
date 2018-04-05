@@ -27,7 +27,8 @@
 							<goal>single</goal>
 						</goals>
 						<configuration>
-							<finalName>latex-distribution-${project.version}</finalName>
+							<appendAssemblyId>false</appendAssemblyId>
+							<finalName>release</finalName>
 							<descriptors>
 								<descriptor>src/assembly/assembly.xml</descriptor>
 							</descriptors>
