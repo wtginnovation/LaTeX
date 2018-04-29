@@ -204,18 +204,6 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<configuration>
-							<fork>true</fork>
-							<meminitial>128m</meminitial>
-							<maxmem>768m</maxmem>
-						</configuration>
-						<source>${sourceCodeLevel}</source>
-						<target>${sourceCodeLevel}</target>
-					</configuration>
-				</plugin>
-				<plugin>
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<configuration>
 						<encoding>${encoding}</encoding>
@@ -234,15 +222,6 @@
 					<configuration>
 						<additionalparam>-Xdoclint:none</additionalparam>
 					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>maven-release-plugin</artifactId>
-					<configuration>
-						<goals>deploy</goals>
-					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>maven-surefire-plugin</artifactId>
 				</plugin>
 				<plugin>
 					<groupId>org.jacoco</groupId>
