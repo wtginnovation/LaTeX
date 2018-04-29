@@ -5,7 +5,7 @@ cache:
 before_install:
 - sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended xzdec -y
 script:
-- mvn -f latex/pom.xml -Pcodecoverage,release clean install jacoco:report
+- mvn -f latex/pom.xml -Pcodecoverage,release clean install
 deploy:
   provider: releases
   api_key:
