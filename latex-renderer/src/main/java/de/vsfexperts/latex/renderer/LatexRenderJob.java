@@ -36,6 +36,8 @@ class LatexRenderJob implements Runnable {
 	public void run() {
 		try {
 			runInternal();
+		} catch (final LatexRenderingException e) {
+			throw e;
 		} catch (final Exception e) {
 			throw new LatexRenderingException(e);
 		} finally {

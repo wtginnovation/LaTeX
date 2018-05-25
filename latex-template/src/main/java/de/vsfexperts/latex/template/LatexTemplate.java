@@ -76,6 +76,8 @@ public class LatexTemplate {
 				throw new LatexTemplateProcessingException(template);
 			}
 
+		} catch (final LatexTemplateProcessingException e) {
+			throw e;
 		} catch (final Exception e) {
 			throw new LatexTemplateProcessingException(e);
 		}
