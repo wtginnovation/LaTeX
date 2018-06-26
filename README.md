@@ -49,6 +49,7 @@ example: `java -Dspring.profiles.active=prod -Drenderer.threads=2 -Drenderer.wor
 - Each job is receiving a new uuid, so the output in the archive is immutable. It's possible to cache the job output as a result in some frontend cache (e.g. Varnish). This might be necessary if there're a lot of reads of the generated output.
 
 # ToDos/Limitations
-- The whole tex template is submitted in the post request, so it's currently not possible to include external resources (e.g. images), because those won't be found/available on the render server. Use [pdfinlimg](https://github.com/zerotoc/pdfinlimg) to inline small images (e.g. company logos) and supply them within the tex document. 
-- Currenly pdflatex is run multiple times to create the pdf. BibTeX or other external tools aren't executed as part of this build. If you need that, it's probably easier to switch to [Latexmk](http://personal.psu.edu/jcc8/latexmk/) instead of pdflatex to render files
+- The whole tex document is submitted in the post request, so it's currently not possible to include external resources (e.g. images), because those won't be found/available on the render server. Use [pdfinlimg](https://github.com/zerotoc/pdfinlimg) to inline small images (e.g. company logos) and supply them within the tex document. 
+- Currenly pdflatex is run multiple times to create the pdf. BibTeX or other external tools aren't executed as part of this build. If you need that, it's probably easier to switch to [Latexmk](http://personal.psu.edu/jcc8/latexmk/) instead of pdflatex to render files.
+See method buildRenderProcess in [LatexRenderJob](latex-renderer/src/main/java/de/vsfexperts/latex/renderer/LatexRenderJob.java).
 
