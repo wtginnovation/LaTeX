@@ -14,7 +14,7 @@ import de.vsfexperts.latex.storage.Archive;
 import de.vsfexperts.latex.storage.LocalFileSystemStorage;
 
 /**
- * Renders a LaTeX file. Only single pass rendering is supported atm.
+ * Renders a LaTeX file.
  */
 class LatexRenderJob implements Runnable {
 
