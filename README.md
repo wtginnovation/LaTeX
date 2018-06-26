@@ -42,9 +42,11 @@ There're 3 config values, which can be set in [application.yaml](latex-server/sr
 example: `java -Dspring.profiles.active=prod -Drenderer.threads=2 -Drenderer.workDirectory=c:\temp\work -Drenderer.archiveDirectory=c:\temp\archive -jar latex-server.jar`
 
 # Scaling the service
-- Deploy it in a loadbalanced setup on multiple servers
-- Our installation is using [GlusterFS](https://www.gluster.org/) as backend storage of the archive folder, so the pdfs will be distributed and available on all members of the cluster. Each job output is stored in a subdirectory named by its uuid. The tex template and the pdf will be stored there for debugging purposes.
-- LaTeX is single threaded, so the render jobs are submitted to a thread pool, which is sized to use the number of physical cpus as a limit to parallel threads (default value).
+- Deployment of multiple instances of the renderer in a loadbalanced setup on multiple servers (round robin/least load preferred)
+- Security setup (authentication/authorization) should be configured in load balancer as well (e.g. basic auth in nginx in most simple cases). It's not part of this project.
+- LaTeX is single threaded, so the render jobs are submitted to a thread pool, which is sized to use the number of physical cpus as a limit to parallel threads (default value). The queue size of the pool is unlimited atm, so that's the reason to prefer round robin in order to reduce the risk of overloading a node. The queued render jobs aren't stored on disk (only in memory), so those are going to be lost if the node has crashed/ is stopped.
+- Most of the load is created in the rendering process, so the scaling of the service is pretty easy by adding new render nodes. The archive directory should be kept on a distributed filesystem, so that each node is able to return the results to the client. Our installation is using [GlusterFS](https://www.gluster.org/) as backend storage of the archive folder.
+- Each job is receiving a new uuid, so the output in the archive is immutable. It's possible to cache the job output as a result in some frontend cache (e.g. Varnish). This might be necessary if there're a lot of reads of the generated output.
 
 # ToDos/Limitations
 - The whole tex template is submitted in the post request, so it's currently not possible to include external resources (e.g. images), because those won't be found/available on the render server. Use [pdfinlimg](https://github.com/zerotoc/pdfinlimg) to inline small images (e.g. company logos) and supply them within the tex document. 
