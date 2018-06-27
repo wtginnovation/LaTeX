@@ -3,7 +3,6 @@ package de.vsfexperts.latex.server.configuration;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -29,14 +28,11 @@ public class RendererConfiguration {
 	private int parallelThreads;
 
 	@Bean
-	@Autowired
-	public LatexRenderer latexRenderer(final LocalFileSystemStorage tempStorage, final Archive archive,
-			final Executor executor) {
-		return new MultithreadedLatexRenderer(tempStorage, archive, executor);
+	public LatexRenderer latexRenderer() {
+		return new MultithreadedLatexRenderer(tempStorage(), archive(), executor());
 	}
 
-	@Bean
-	public Executor executor() {
+	private Executor executor() {
 		return Executors.newFixedThreadPool(parallelThreads);
 	}
 

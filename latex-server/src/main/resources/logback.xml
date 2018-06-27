@@ -11,7 +11,7 @@
 
 	<!-- application log -->
 	<logger name="de.vsfexperts" level="info" />
-	<logger name="de.vsfexperts.latex.renderer.LatexRenderJob" level="info" />
+	<logger name="de.vsfexperts.latex.renderer.LatexRenderJob" level="trace" />
 	<logger name="org.springframework" level="info" />
 
 	<root level="info">

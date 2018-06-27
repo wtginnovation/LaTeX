@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -24,6 +25,7 @@
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
+		<docker-maven-plugin.version>0.26.0</docker-maven-plugin.version>
 		<maven-jacoco-plugin.version>0.7.9</maven-jacoco-plugin.version>
 	</properties>
 
@@ -90,6 +92,7 @@
 			<id>release</id>
 			<modules>
 				<module>../latex-distribution</module>
+				<module>../latex-docker</module>
 				<module>../latex-renderer</module>
 				<module>../latex-server</module>
 				<module>../latex-template</module>
@@ -222,6 +225,11 @@
 					<configuration>
 						<additionalparam>-Xdoclint:none</additionalparam>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>io.fabric8</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>${docker-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.jacoco</groupId>
