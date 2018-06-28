@@ -24,6 +24,11 @@
 		<sourceCodeLevel>${java.version}</sourceCodeLevel>
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+		
+		<commons-io.version>2.6</commons-io.version>
+		<run-java-sh.version>1.2.0</run-java-sh.version>
+		<velocity.version>1.7</velocity.version>
+		<velocity-tools.version>2.0</velocity-tools.version>
 
 		<docker-maven-plugin.version>0.26.0</docker-maven-plugin.version>
 		<maven-jacoco-plugin.version>0.7.9</maven-jacoco-plugin.version>
@@ -142,18 +147,18 @@
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
-				<version>2.6</version>
+				<version>${commons-io.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.apache.velocity</groupId>
 				<artifactId>velocity</artifactId>
-				<version>1.7</version>
+				<version>${velocity.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.velocity</groupId>
 				<artifactId>velocity-tools</artifactId>
-				<version>2.0</version>
+				<version>${velocity-tools.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -230,6 +235,13 @@
 					<groupId>io.fabric8</groupId>
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>${docker-maven-plugin.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>io.fabric8</groupId>
+							<artifactId>run-java-sh</artifactId>
+							<version>${run-java-sh.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.jacoco</groupId>
