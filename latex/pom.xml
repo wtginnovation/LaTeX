@@ -26,7 +26,7 @@
 		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
 		<commons-io.version>2.6</commons-io.version>
-		<run-java-sh.version>1.2.0</run-java-sh.version>
+		<run-java-sh.version>1.2.2</run-java-sh.version>
 		<velocity.version>1.7</velocity.version>
 		<velocity-tools.version>2.0</velocity-tools.version>
 

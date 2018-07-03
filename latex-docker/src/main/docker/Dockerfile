@@ -10,12 +10,16 @@ RUN ln -snf /usr/share/zoneinfo/Etc/UTC /etc/localtime \
     
 ADD maven /root
 
-EXPOSE 8080
-
 RUN mkdir -p /var/archive /tmp/renderer \
     && chmod 770 /var/archive /tmp/renderer \
     && chown root:root /var/archive /tmp/renderer
 
 VOLUME /var/archive /tmp/renderer
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/urandom", "-Dspring.profiles.active=prod", "-jar", "/root/latex-server.jar"]
+EXPOSE 8080
+
+ENV JAVA_APP_JAR latex-server.jar
+ENV JAVA_APP_DIR /root
+ENV JAVA_OPTIONS "-Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=prod"
+
+ENTRYPOINT ["sh", "/root/run-java.sh"]

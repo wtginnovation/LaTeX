@@ -68,6 +68,9 @@
 								<dockerFile>Dockerfile</dockerFile>
 								<assembly>
 									<inline>
+										<file>
+											<source>${project.build.directory}/docker-extra/run-java/run-java.sh</source>
+										</file>
 										<dependencySets>
 											<dependencySet>
 												<includes>
