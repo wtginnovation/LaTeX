@@ -39,14 +39,13 @@
 			<plugin>
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<extensions>true</extensions>
 				<executions>
 					<execution>
 						<id>start</id>
 						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>build</goal>
-							<!-- <goal>start</goal> -->
+							<goal>start</goal>
 						</goals>
 					</execution>
 					<execution>
@@ -58,8 +57,9 @@
 					</execution>
 				</executions>
 				<configuration>
+					<!-- <dockerHost>tcp://localhost:2375</dockerHost> -->
 					<verbose>true</verbose>
-					<autoPull>always</autoPull>
+					<useColor>true</useColor>
 					<images>
 						<image>
 							<alias>latex-render-server</alias>
@@ -82,6 +82,17 @@
 									</inline>
 								</assembly>
 							</build>
+							<run>
+								<ports>
+									<port>8080:8080</port>
+								</ports>
+								<wait>
+									<http>
+										<url>http://localhost:8080/admin/index.html</url>
+									</http>
+									<time>20000</time>
+								</wait>
+							</run>
 						</image>
 					</images>
 				</configuration>
@@ -93,6 +104,10 @@
 		<dependency>
 			<groupId>de.vsfexperts.latex</groupId>
 			<artifactId>latex-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
 		</dependency>
 	</dependencies>
 
