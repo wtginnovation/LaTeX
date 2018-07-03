@@ -25,7 +25,9 @@ import org.springframework.web.client.RestTemplate;
 public class ApiIT {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ApiIT.class);
-	private static final String baseUrl = "http://localhost:8080";
+	private static final String TEST_DOCUMENT = "/META-INF/sample.tex";
+	private static final String BASE_URL = "http://localhost:8080";
+	private static final int MAX_RETRIES = 5;
 
 	private RestTemplate rest;
 
@@ -38,10 +40,10 @@ public class ApiIT {
 	}
 
 	@Test
-	public void testPdfRendering() throws IOException {
-		final String latexDocument = getContent("/META-INF/sample.tex");
+	public void testDocumentSubmission() throws IOException {
+		final String latexDocument = getContent(TEST_DOCUMENT);
 
-		final ResponseEntity<UUID> result = renderPdf(latexDocument);
+		final ResponseEntity<UUID> result = render(latexDocument);
 
 		assertThat(result.getBody(), is(not(nullValue())));
 		assertThat(result.getStatusCode(), is(ACCEPTED));
@@ -49,32 +51,31 @@ public class ApiIT {
 
 	@Test
 	public void testRenderingResult() throws Exception {
-		final String latexDocument = getContent("/META-INF/sample.tex");
+		final String latexDocument = getContent(TEST_DOCUMENT);
 
-		final UUID jobId = renderPdf(latexDocument).getBody();
+		final UUID jobId = render(latexDocument).getBody();
 		assumeThat(jobId, is(not(nullValue())));
 
-		final byte[] fetchResult = fetchResult(jobId);
-
-		assertThat(fetchResult, is(not(nullValue())));
+		final byte[] pdf = downloadPdf(jobId);
+		assertThat(pdf, is(not(nullValue())));
 	}
 
-	private byte[] fetchResult(final UUID jobId) throws InterruptedException {
-		int maxRetries = 5;
+	private byte[] downloadPdf(final UUID jobId) throws InterruptedException {
 		ResponseEntity<byte[]> result = null;
 
-		while (maxRetries > 0) {
+		int retries = MAX_RETRIES;
+		while (retries > 0) {
 			try {
-				result = fetchPdf(jobId);
+				result = fetchOutput(jobId);
 			} catch (final HttpClientErrorException e) {
-				LOG.warn("Attempt to retrieve pdf has failed. {} retries left", maxRetries - 1);
+				LOG.warn("Attempt to retrieve pdf has failed. {} retries left", retries - 1);
 				Thread.sleep(1000l);
 			} finally {
-				maxRetries--;
+				retries--;
 			}
 		}
 
-		if (result == null) {
+		if (result == null || result.getStatusCode().isError()) {
 			return null;
 		}
 
@@ -82,12 +83,12 @@ public class ApiIT {
 
 	}
 
-	private ResponseEntity<UUID> renderPdf(final String latexDocument) {
-		return rest.postForEntity(baseUrl, latexDocument, UUID.class);
+	private ResponseEntity<UUID> render(final String latexDocument) {
+		return rest.postForEntity(BASE_URL, latexDocument, UUID.class);
 	}
 
-	private ResponseEntity<byte[]> fetchPdf(final UUID jobId) {
-		return rest.getForEntity(baseUrl + "/" + jobId, byte[].class);
+	private ResponseEntity<byte[]> fetchOutput(final UUID jobId) {
+		return rest.getForEntity(BASE_URL + "/" + jobId, byte[].class);
 	}
 
 }
