@@ -9,6 +9,7 @@ before_install:
 - sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended
   xzdec -y
 script:
+- echo "$docker.password" | docker login -u "$docker.username" --password-stdin
 - mvn -f latex/pom.xml -Pcodecoverage,release clean install docker:push
 deploy:
   provider: releases
