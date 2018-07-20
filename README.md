@@ -41,6 +41,12 @@ There're 3 config values, which can be set in [application.yaml](latex-server/sr
 
 example: `java -Dspring.profiles.active=prod -Drenderer.threads=2 -Drenderer.workDirectory=c:\temp\work -Drenderer.archiveDirectory=c:\temp\archive -jar latex-server.jar`
 
+# Docker
+The render server is also available as a docker container at [vsfexperts/latex-render-server](https://hub.docker.com/r/vsfexperts/latex-render-server/)
+`docker run -d -p 8080:8080 vsfexperts/latex-render-server` will start it locally.
+Just use some http client in order to upload a tex file, e.g. curl: `curl -X POST --data-binary @sample.tex -H "Content-Type: text/plain; charset=UTF-8" http://localhost:8080`
+The admin page is available at http://localhost:8080/admin/index.html
+
 # Scaling the service
 - Deployment of multiple instances of the renderer in a loadbalanced setup on multiple servers (round robin/least load preferred)
 - Security setup (authentication/authorization) should be configured in load balancer as well (e.g. basic auth in nginx in most simple cases). The render nodes are unprotected, so those need to be also secured (e.g. iptables or by adding spring security to the render server). Sometimes this might not be necessary, if the nodes aren't reachable from the outside (e.g. cloud tenant with private ips, just load balancer with public one)
