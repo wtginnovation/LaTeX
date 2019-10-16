@@ -8,11 +8,11 @@ cache:
   directories:
   - "$HOME/.m2"
 before_install:
-- sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended lmodern 
+- sudo apt-get install -qq texlive-latex-base texlive-latex-extra texlive-fonts-recommended lmodern 
   xzdec -y
 script:
 - echo "$docker_password" | docker login -u "$docker_username" --password-stdin
-- mvn -f latex/pom.xml -Pcodecoverage,release clean install docker:push
+- mvn -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -f latex/pom.xml -Pcodecoverage,release clean install docker:push
 deploy:
   provider: releases
   api_key:
