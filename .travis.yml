@@ -6,7 +6,7 @@ cache:
   directories:
   - "$HOME/.m2"
 before_install:
-- sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended
+- sudo apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended lmodern 
   xzdec -y
 script:
 - echo "$docker_password" | docker login -u "$docker_username" --password-stdin
