@@ -5,7 +5,7 @@ RUN ln -snf /usr/share/zoneinfo/Etc/UTC /etc/localtime \
     && echo "Etc/UTC" > /etc/timezone \
     && apt-get update \
     && apt-get upgrade -y \
-    && apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended xzdec openjdk-8-jdk -y \
+    && apt-get install texlive-latex-base texlive-latex-extra texlive-fonts-recommended lmodern xzdec openjdk-8-jdk -y \
     && rm -rf /var/lib/apt/lists/*
     
 ADD maven /root
