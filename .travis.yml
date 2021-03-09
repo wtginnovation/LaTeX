@@ -1,6 +1,4 @@
 dist: focal
-os: 
-	- linux
 services:
 - docker
 language: java
