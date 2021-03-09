@@ -1,6 +1,6 @@
 package de.vsfexperts.latex.server.service;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 
 import java.util.Map;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class GlobalErrorController implements ErrorController {
 	@Autowired
 	private ErrorAttributes errorAttributes;
 
-	@RequestMapping(value = ERROR_PATH, produces = { APPLICATION_JSON_UTF8_VALUE, APPLICATION_XML_VALUE })
+	@RequestMapping(value = ERROR_PATH, produces = { APPLICATION_JSON_VALUE, APPLICATION_XML_VALUE })
 	public ErrorMessage handleError(final HttpServletRequest request, final HttpServletResponse response) {
 		return new ErrorMessage(response.getStatus(), getErrorAttributes(request));
 	}
@@ -39,7 +40,7 @@ public class GlobalErrorController implements ErrorController {
 
 	private Map<String, Object> getErrorAttributes(final HttpServletRequest request) {
 		final WebRequest webRequest = new ServletWebRequest(request);
-		return errorAttributes.getErrorAttributes(webRequest, false);
+		return errorAttributes.getErrorAttributes(webRequest, ErrorAttributeOptions.defaults());
 	}
 
 }

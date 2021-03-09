@@ -2,7 +2,7 @@ package de.vsfexperts.latex.server.service;
 
 import static org.springframework.http.HttpStatus.ACCEPTED;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.APPLICATION_PDF_VALUE;
 
 import java.io.File;
@@ -32,7 +32,7 @@ public class RenderController {
 	@Autowired
 	private LatexRenderer renderer;
 
-	@PostMapping(value = "/", produces = APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(value = "/", produces = APPLICATION_JSON_VALUE)
 	@ResponseStatus(ACCEPTED)
 	@Timed("render-job")
 	public UUID renderJob(@RequestBody @Valid @NotNull final String template) {

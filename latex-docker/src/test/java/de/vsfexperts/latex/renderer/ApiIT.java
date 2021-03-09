@@ -4,7 +4,7 @@ import static de.vsfexperts.latex.renderer.ClasspathUtils.getContent;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assume.assumeThat;
 import static org.springframework.http.HttpStatus.ACCEPTED;
 

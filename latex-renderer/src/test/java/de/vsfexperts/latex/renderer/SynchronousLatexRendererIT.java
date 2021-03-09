@@ -3,7 +3,7 @@ package de.vsfexperts.latex.renderer;
 import static de.vsfexperts.latex.renderer.ClasspathUtils.getContent;
 import static de.vsfexperts.latex.renderer.FileMatcher.notAnEmptyFile;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.File;
 import java.util.UUID;

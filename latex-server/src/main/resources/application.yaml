@@ -1,13 +1,11 @@
 ##########################
 ## Global
 ##########################
+spring.jmx.unique-names: true
 management.endpoints.jmx.domain: latex-renderer
-management.endpoints.jmx.unique-names: true
 management.endpoints.web.exposure.include: "*"
-management.metrics.web.server.auto-time-requests: false
-
+management.metrics.web.server.request.autotime.enabled: false
 server.error.whitelabel.enabled: false
-spring.mvc.favicon.enabled: true
 server.tomcat.additional-tld-skip-patterns: "*.jar"
 
 --- 
@@ -15,8 +13,7 @@ server.tomcat.additional-tld-skip-patterns: "*.jar"
 ##########################
 ## Default
 ##########################
-spring:
-  profiles: default
+spring.config.activate.on-profile: default 
  
 renderer:
   archiveDirectory: c:\temp\archive
@@ -27,8 +24,7 @@ renderer:
 ##########################
 ## Prod
 ##########################
-spring:
-  profiles: prod
+spring.config.activate.on-profile: prod
 
 renderer:
   archiveDirectory: /var/archive
