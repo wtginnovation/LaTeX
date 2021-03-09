@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:latest
 LABEL Description="LaTeX Render Server"
 
 RUN ln -snf /usr/share/zoneinfo/Etc/UTC /etc/localtime \
